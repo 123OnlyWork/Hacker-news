@@ -5,6 +5,7 @@
 ### Клонировать репазиторий
 
 ```
+git init
 git clone https://github.com/123OnlyWork/Hacker-news.git
 
 ```
