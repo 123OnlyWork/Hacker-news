@@ -10,7 +10,7 @@ git clone https://github.com/123OnlyWork/Hacker-news.git
 
 ```
 ### Установка зависимостей ###
-Перейдите в директорию front :
+Перейти в директорию front :
 ```
 cd front
 
