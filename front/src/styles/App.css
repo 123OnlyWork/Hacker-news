@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+}
+div.NewsName {
+  margin-top: 14px;
+  font-size:x-large;
+  font-weight:500;
+}
+.news-header {
+  background: #0a809a;
+}
+.news-content {
+  padding: 20px 50px;
+}
+
+
+
