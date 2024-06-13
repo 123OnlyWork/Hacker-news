@@ -1,17 +1,17 @@
 const express = require('express');
 const axios = require('axios');
 const path = require('path');
-const NodeCache = require('node-cache'); // Пакет для кэширования
+const NodeCache = require('node-cache'); 
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-const cache = new NodeCache(); // Инициализация кэша
+const cache = new NodeCache();
 
-// Middleware для обработки JSON и URL-кодированных данных
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Маршрут для внешнего API запроса комментариев
+// Маршрут API запроса комментариев
 app.get('/api/comments/:id', async (req, res) => {
   const { id } = req.params;
   try {
@@ -19,7 +19,7 @@ app.get('/api/comments/:id', async (req, res) => {
     if (!comment) {
       const response = await axios.get(`https://hacker-news.firebaseio.com/v0/item/${id}.json`);
       comment = response.data;
-      cache.set(id, comment, 60); // Кэшируем на 60 секунд
+      cache.set(id, comment, 60); 
     }
     res.json(comment);
   } catch (error) {
@@ -28,7 +28,7 @@ app.get('/api/comments/:id', async (req, res) => {
   }
 });
 
-// Маршрут для внешнего API запроса новостей
+// Маршрут API запроса новостей
 app.get('/api/news/:id', async (req, res) => {
   const { id } = req.params;
   try {
@@ -36,7 +36,7 @@ app.get('/api/news/:id', async (req, res) => {
     if (!news) {
       const response = await axios.get(`https://hacker-news.firebaseio.com/v0/item/${id}.json`);
       news = response.data;
-      cache.set(id, news, 60); // Кэшируем на 60 секунд
+      cache.set(id, news, 60); 
     }
     res.json(news);
   } catch (error) {
@@ -45,10 +45,10 @@ app.get('/api/news/:id', async (req, res) => {
   }
 });
 
-// Обслуживание статических файлов из директории build
+
 app.use(express.static(path.join(__dirname, 'build')));
 
-// Отправка index.html для всех остальных запросов
+
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
