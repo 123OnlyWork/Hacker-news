@@ -14,7 +14,7 @@ git clone https://github.com/123OnlyWork/Hacker-news.git
 cd front
 
 ```
-Установить зависимости с помощью Yarn
+### Установить зависимости с помощью Yarn ###
 ```
 yarn install
 
